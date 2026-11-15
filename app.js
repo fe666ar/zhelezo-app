@@ -86,7 +86,7 @@ function searchParts(q) {
   });
   return (phrase.length ? phrase : loose)
     .sort((a, b) => (b.exact - a.exact) || a.p.name.localeCompare(b.p.name, "en", { numeric: true }))
-    .slice(0, 8).map(x => x.p);
+    .slice(0, 60).map(x => x.p);
 }
 
 function renderSuggest(list) {

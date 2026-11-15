@@ -109,7 +109,7 @@ h1 { font-weight: 700; font-size: 26px; line-height: 1.15; margin: 4px 0 8px; le
 
 .suggest {
   position: absolute; z-index: 10; left: 0; right: 0; top: calc(100% + 6px); background: rgba(20, 19, 34, .98);
-  border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
+  border: 1px solid var(--line); border-radius: 16px; overflow-y: auto; max-height: min(46vh, 380px); overscroll-behavior: contain; -webkit-overflow-scrolling: touch; box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
   opacity: 0; transform: translateY(-6px) scale(.98); transform-origin: top; pointer-events: none;
   transition: opacity 200ms var(--ease), transform 260ms var(--ease);
 }

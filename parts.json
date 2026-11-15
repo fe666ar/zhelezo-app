@@ -3,6 +3,459 @@
   "updated": "15.11.2026",
   "cpu": [
     {
+      "id": "r5-3600",
+      "name": "AMD Ryzen 5 3600",
+      "aliases": [
+        "ryzen 5 3600",
+        "r5 3600"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 65,
+      "score": 40,
+      "mt": 26,
+      "price_new": null,
+      "price_used": 4500,
+      "box_cooler": true,
+      "estimate": true
+    },
+    {
+      "id": "r5-5500",
+      "name": "AMD Ryzen 5 5500",
+      "aliases": [
+        "ryzen 5 5500",
+        "r5 5500",
+        "5500"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 65,
+      "score": 46,
+      "mt": 31,
+      "price_new": 8499,
+      "price_used": 6500,
+      "box_cooler": true,
+      "estimate": true
+    },
+    {
+      "id": "r5-5600",
+      "name": "AMD Ryzen 5 5600",
+      "aliases": [
+        "ryzen 5 5600",
+        "r5 5600",
+        "5600",
+        "5600x"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 65,
+      "score": 52,
+      "mt": 35,
+      "price_new": 11499,
+      "price_used": 8600,
+      "box_cooler": true
+    },
+    {
+      "id": "r5-5600x",
+      "name": "AMD Ryzen 5 5600X",
+      "aliases": [
+        "ryzen 5 5600x",
+        "r5 5600x",
+        "5600x"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 65,
+      "score": 54,
+      "mt": 36,
+      "price_new": null,
+      "price_used": 9500,
+      "box_cooler": true,
+      "estimate": true
+    },
+    {
+      "id": "r7-5700x",
+      "name": "AMD Ryzen 7 5700X",
+      "aliases": [
+        "ryzen 7 5700x",
+        "r7 5700x",
+        "5700x"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 65,
+      "score": 56,
+      "mt": 48,
+      "price_new": 14399,
+      "price_used": 10800,
+      "box_cooler": false
+    },
+    {
+      "id": "r7-5800x",
+      "name": "AMD Ryzen 7 5800X",
+      "aliases": [
+        "ryzen 7 5800x",
+        "r7 5800x",
+        "5800x"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 105,
+      "score": 58,
+      "mt": 50,
+      "price_new": null,
+      "price_used": 12000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "r9-5900x",
+      "name": "AMD Ryzen 9 5900X",
+      "aliases": [
+        "ryzen 9 5900x",
+        "r9 5900x",
+        "5900x"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 105,
+      "score": 60,
+      "mt": 72,
+      "price_new": null,
+      "price_used": 17000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "r7-5700x3d",
+      "name": "AMD Ryzen 7 5700X3D",
+      "aliases": [
+        "ryzen 7 5700x3d",
+        "r7 5700x3d",
+        "5700x3d"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 105,
+      "score": 66,
+      "mt": 46,
+      "price_new": 21999,
+      "price_used": 17000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "r7-5800x3d",
+      "name": "AMD Ryzen 7 5800X3D",
+      "aliases": [
+        "ryzen 7 5800x3d",
+        "r7 5800x3d",
+        "5800x3d"
+      ],
+      "socket": "AM4",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 105,
+      "score": 70,
+      "mt": 50,
+      "price_new": 43499,
+      "price_used": 32600,
+      "box_cooler": false
+    },
+    {
+      "id": "r5-7500f",
+      "name": "AMD Ryzen 5 7500F",
+      "aliases": [
+        "ryzen 5 7500f",
+        "r5 7500f",
+        "7500f"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 65,
+      "score": 66,
+      "mt": 45,
+      "price_new": 12799,
+      "price_used": 11000,
+      "box_cooler": false
+    },
+    {
+      "id": "r5-7600",
+      "name": "AMD Ryzen 5 7600",
+      "aliases": [
+        "ryzen 5 7600",
+        "r5 7600"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 65,
+      "score": 67,
+      "mt": 46,
+      "price_new": 16399,
+      "price_used": 13500,
+      "box_cooler": true
+    },
+    {
+      "id": "r5-7600x",
+      "name": "AMD Ryzen 5 7600X",
+      "aliases": [
+        "ryzen 5 7600x",
+        "r5 7600x",
+        "7600x"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 105,
+      "score": 69,
+      "mt": 48,
+      "price_new": 17499,
+      "price_used": 14000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "r7-7700",
+      "name": "AMD Ryzen 7 7700",
+      "aliases": [
+        "ryzen 7 7700",
+        "r7 7700",
+        "7700"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 65,
+      "score": 72,
+      "mt": 62,
+      "price_new": 32299,
+      "price_used": 24200,
+      "box_cooler": true
+    },
+    {
+      "id": "r5-9600x",
+      "name": "AMD Ryzen 5 9600X",
+      "aliases": [
+        "ryzen 5 9600x",
+        "r5 9600x",
+        "9600x",
+        "9600"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 65,
+      "score": 74,
+      "mt": 50,
+      "price_new": 17799,
+      "price_used": 18000,
+      "box_cooler": false
+    },
+    {
+      "id": "r7-7700x",
+      "name": "AMD Ryzen 7 7700X",
+      "aliases": [
+        "ryzen 7 7700x",
+        "r7 7700x",
+        "7700x"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 105,
+      "score": 74,
+      "mt": 63,
+      "price_new": 29999,
+      "price_used": 24000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "r7-9700x",
+      "name": "AMD Ryzen 7 9700X",
+      "aliases": [
+        "ryzen 7 9700x",
+        "r7 9700x",
+        "9700x"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 65,
+      "score": 78,
+      "mt": 66,
+      "price_new": 30999,
+      "price_used": 25000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "r9-7900x",
+      "name": "AMD Ryzen 9 7900X",
+      "aliases": [
+        "ryzen 9 7900x",
+        "r9 7900x",
+        "7900x"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 170,
+      "score": 78,
+      "mt": 92,
+      "price_new": 33999,
+      "price_used": 27000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "r9-9950x",
+      "name": "AMD Ryzen 9 9950X",
+      "aliases": [
+        "ryzen 9 9950x",
+        "r9 9950x",
+        "9950x"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 170,
+      "score": 88,
+      "mt": 135,
+      "price_new": 62999,
+      "price_used": 52000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "r7-7800x3d",
+      "name": "AMD Ryzen 7 7800X3D",
+      "aliases": [
+        "ryzen 7 7800x3d",
+        "r7 7800x3d",
+        "7800x3d"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 120,
+      "score": 90,
+      "mt": 60,
+      "price_new": 27999,
+      "price_used": 31000,
+      "box_cooler": false
+    },
+    {
+      "id": "r7-9800x3d",
+      "name": "AMD Ryzen 7 9800X3D",
+      "aliases": [
+        "ryzen 7 9800x3d",
+        "r7 9800x3d",
+        "9800x3d"
+      ],
+      "socket": "AM5",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 120,
+      "score": 100,
+      "mt": 68,
+      "price_new": 40299,
+      "price_used": 42000,
+      "box_cooler": false
+    },
+    {
+      "id": "i3-10100f",
+      "name": "Intel Core i3-10100F",
+      "aliases": [
+        "i3 10100f",
+        "i3-10100f",
+        "10100f"
+      ],
+      "socket": "LGA1200",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 65,
+      "score": 36,
+      "mt": 18,
+      "price_new": null,
+      "price_used": 3500,
+      "box_cooler": true,
+      "estimate": true
+    },
+    {
+      "id": "i5-10400f",
+      "name": "Intel Core i5-10400F",
+      "aliases": [
+        "i5 10400f",
+        "i5-10400f",
+        "10400f",
+        "10400"
+      ],
+      "socket": "LGA1200",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 65,
+      "score": 42,
+      "mt": 26,
+      "price_new": null,
+      "price_used": 5200,
+      "box_cooler": true,
+      "estimate": true
+    },
+    {
+      "id": "i5-11400f",
+      "name": "Intel Core i5-11400F",
+      "aliases": [
+        "i5 11400f",
+        "i5-11400f",
+        "11400f",
+        "11400"
+      ],
+      "socket": "LGA1200",
+      "ram": [
+        "DDR4"
+      ],
+      "tdp": 65,
+      "score": 48,
+      "mt": 30,
+      "price_new": null,
+      "price_used": 6800,
+      "box_cooler": true,
+      "estimate": true
+    },
+    {
       "id": "i3-12100f",
       "name": "Intel Core i3-12100F",
       "aliases": [
@@ -66,6 +519,72 @@
       "box_cooler": true
     },
     {
+      "id": "i5-12600kf",
+      "name": "Intel Core i5-12600KF",
+      "aliases": [
+        "i5 12600kf",
+        "i5-12600kf",
+        "12600kf",
+        "12600k"
+      ],
+      "socket": "LGA1700",
+      "ram": [
+        "DDR4",
+        "DDR5"
+      ],
+      "tdp": 125,
+      "score": 66,
+      "mt": 55,
+      "price_new": 17999,
+      "price_used": 13000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "i7-12700kf",
+      "name": "Intel Core i7-12700KF",
+      "aliases": [
+        "i7 12700kf",
+        "i7-12700kf",
+        "12700kf",
+        "12700k"
+      ],
+      "socket": "LGA1700",
+      "ram": [
+        "DDR4",
+        "DDR5"
+      ],
+      "tdp": 125,
+      "score": 70,
+      "mt": 68,
+      "price_new": 23999,
+      "price_used": 17500,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "i5-13600kf",
+      "name": "Intel Core i5-13600KF",
+      "aliases": [
+        "i5 13600kf",
+        "i5-13600kf",
+        "13600kf",
+        "13600k"
+      ],
+      "socket": "LGA1700",
+      "ram": [
+        "DDR4",
+        "DDR5"
+      ],
+      "tdp": 125,
+      "score": 74,
+      "mt": 70,
+      "price_new": 21999,
+      "price_used": 17000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
       "id": "i5-14600kf",
       "name": "Intel Core i5-14600KF",
       "aliases": [
@@ -88,181 +607,197 @@
       "box_cooler": false
     },
     {
-      "id": "r5-5600",
-      "name": "AMD Ryzen 5 5600",
+      "id": "i7-13700kf",
+      "name": "Intel Core i7-13700KF",
       "aliases": [
-        "ryzen 5 5600",
-        "r5 5600",
-        "5600",
-        "5600x"
+        "i7 13700kf",
+        "i7-13700kf",
+        "13700kf",
+        "13700k"
       ],
-      "socket": "AM4",
+      "socket": "LGA1700",
       "ram": [
-        "DDR4"
+        "DDR4",
+        "DDR5"
       ],
-      "tdp": 65,
-      "score": 52,
-      "mt": 35,
-      "price_new": 11499,
-      "price_used": 8600,
-      "box_cooler": true
+      "tdp": 125,
+      "score": 80,
+      "mt": 85,
+      "price_new": 32999,
+      "price_used": 25000,
+      "box_cooler": false,
+      "estimate": true
     },
     {
-      "id": "r7-5700x",
-      "name": "AMD Ryzen 7 5700X",
+      "id": "i7-14700kf",
+      "name": "Intel Core i7-14700KF",
       "aliases": [
-        "ryzen 7 5700x",
-        "r7 5700x",
-        "5700x"
+        "i7 14700kf",
+        "i7-14700kf",
+        "14700kf",
+        "14700k"
       ],
-      "socket": "AM4",
+      "socket": "LGA1700",
       "ram": [
-        "DDR4"
+        "DDR4",
+        "DDR5"
       ],
-      "tdp": 65,
-      "score": 56,
-      "mt": 48,
-      "price_new": 14399,
-      "price_used": 10800,
-      "box_cooler": false
+      "tdp": 125,
+      "score": 83,
+      "mt": 95,
+      "price_new": 37999,
+      "price_used": 30000,
+      "box_cooler": false,
+      "estimate": true
     },
     {
-      "id": "r7-5800x3d",
-      "name": "AMD Ryzen 7 5800X3D",
+      "id": "i9-13900kf",
+      "name": "Intel Core i9-13900KF",
       "aliases": [
-        "ryzen 7 5800x3d",
-        "r7 5800x3d",
-        "5800x3d"
+        "i9 13900kf",
+        "i9-13900kf",
+        "13900kf",
+        "13900k"
       ],
-      "socket": "AM4",
+      "socket": "LGA1700",
       "ram": [
-        "DDR4"
+        "DDR4",
+        "DDR5"
       ],
-      "tdp": 105,
+      "tdp": 125,
+      "score": 86,
+      "mt": 105,
+      "price_new": null,
+      "price_used": 36000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "i9-14900kf",
+      "name": "Intel Core i9-14900KF",
+      "aliases": [
+        "i9 14900kf",
+        "i9-14900kf",
+        "14900kf",
+        "14900k"
+      ],
+      "socket": "LGA1700",
+      "ram": [
+        "DDR4",
+        "DDR5"
+      ],
+      "tdp": 125,
+      "score": 88,
+      "mt": 110,
+      "price_new": 51999,
+      "price_used": 41000,
+      "box_cooler": false,
+      "estimate": true
+    },
+    {
+      "id": "u5-245k",
+      "name": "Intel Core Ultra 5 245K",
+      "aliases": [
+        "ultra 5 245k",
+        "core ultra 5",
+        "245k",
+        "245kf"
+      ],
+      "socket": "LGA1851",
+      "ram": [
+        "DDR5"
+      ],
+      "tdp": 125,
       "score": 70,
-      "mt": 50,
-      "price_new": 43499,
-      "price_used": 32600,
-      "box_cooler": false
+      "mt": 78,
+      "price_new": 26999,
+      "price_used": 21000,
+      "box_cooler": false,
+      "estimate": true
     },
     {
-      "id": "r5-7500f",
-      "name": "AMD Ryzen 5 7500F",
+      "id": "u7-265k",
+      "name": "Intel Core Ultra 7 265K",
       "aliases": [
-        "ryzen 5 7500f",
-        "r5 7500f",
-        "7500f"
+        "ultra 7 265k",
+        "core ultra 7",
+        "265k",
+        "265kf"
       ],
-      "socket": "AM5",
+      "socket": "LGA1851",
       "ram": [
         "DDR5"
       ],
-      "tdp": 65,
-      "score": 66,
-      "mt": 45,
-      "price_new": 12799,
-      "price_used": 11000,
-      "box_cooler": false
-    },
-    {
-      "id": "r5-7600",
-      "name": "AMD Ryzen 5 7600",
-      "aliases": [
-        "ryzen 5 7600",
-        "r5 7600",
-        "7600x"
-      ],
-      "socket": "AM5",
-      "ram": [
-        "DDR5"
-      ],
-      "tdp": 65,
-      "score": 67,
-      "mt": 46,
-      "price_new": 16399,
-      "price_used": 13500,
-      "box_cooler": true
-    },
-    {
-      "id": "r7-7700",
-      "name": "AMD Ryzen 7 7700",
-      "aliases": [
-        "ryzen 7 7700",
-        "r7 7700",
-        "7700x",
-        "7700"
-      ],
-      "socket": "AM5",
-      "ram": [
-        "DDR5"
-      ],
-      "tdp": 65,
-      "score": 72,
-      "mt": 62,
-      "price_new": 32299,
-      "price_used": 24200,
-      "box_cooler": true
-    },
-    {
-      "id": "r5-9600x",
-      "name": "AMD Ryzen 5 9600X",
-      "aliases": [
-        "ryzen 5 9600x",
-        "r5 9600x",
-        "9600x",
-        "9600"
-      ],
-      "socket": "AM5",
-      "ram": [
-        "DDR5"
-      ],
-      "tdp": 65,
-      "score": 74,
-      "mt": 50,
-      "price_new": 17799,
-      "price_used": 18000,
-      "box_cooler": false
-    },
-    {
-      "id": "r7-7800x3d",
-      "name": "AMD Ryzen 7 7800X3D",
-      "aliases": [
-        "ryzen 7 7800x3d",
-        "r7 7800x3d",
-        "7800x3d"
-      ],
-      "socket": "AM5",
-      "ram": [
-        "DDR5"
-      ],
-      "tdp": 120,
-      "score": 90,
-      "mt": 60,
-      "price_new": 27999,
-      "price_used": 31000,
-      "box_cooler": false
-    },
-    {
-      "id": "r7-9800x3d",
-      "name": "AMD Ryzen 7 9800X3D",
-      "aliases": [
-        "ryzen 7 9800x3d",
-        "r7 9800x3d",
-        "9800x3d"
-      ],
-      "socket": "AM5",
-      "ram": [
-        "DDR5"
-      ],
-      "tdp": 120,
-      "score": 100,
-      "mt": 68,
-      "price_new": 40299,
-      "price_used": 42000,
-      "box_cooler": false
+      "tdp": 125,
+      "score": 78,
+      "mt": 100,
+      "price_new": 35999,
+      "price_used": 29000,
+      "box_cooler": false,
+      "estimate": true
     }
   ],
   "gpu": [
+    {
+      "id": "gtx1050ti",
+      "name": "NVIDIA GTX 1050 Ti",
+      "aliases": [
+        "gtx 1050 ti",
+        "1050 ti",
+        "1050ti"
+      ],
+      "score": 8,
+      "psu_min": 400,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 5500,
+      "estimate": true
+    },
+    {
+      "id": "gtx1650",
+      "name": "NVIDIA GTX 1650",
+      "aliases": [
+        "gtx 1650",
+        "gtx1650",
+        "1650"
+      ],
+      "score": 9,
+      "psu_min": 400,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 7500,
+      "estimate": true
+    },
+    {
+      "id": "rx570",
+      "name": "AMD Radeon RX 570",
+      "aliases": [
+        "rx 570",
+        "rx570",
+        "570"
+      ],
+      "score": 10,
+      "psu_min": 400,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 5000,
+      "estimate": true
+    },
+    {
+      "id": "gtx1060",
+      "name": "NVIDIA GTX 1060 6GB",
+      "aliases": [
+        "gtx 1060",
+        "gtx1060",
+        "1060"
+      ],
+      "score": 11,
+      "psu_min": 400,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 6500,
+      "estimate": true
+    },
     {
       "id": "rx580",
       "name": "AMD Radeon RX 580 8GB",
@@ -276,6 +811,80 @@
       "mining_risk": true,
       "price_new": null,
       "price_used": 6000
+    },
+    {
+      "id": "rx6500xt",
+      "name": "AMD Radeon RX 6500 XT",
+      "aliases": [
+        "rx 6500 xt",
+        "6500 xt",
+        "6500xt"
+      ],
+      "score": 13,
+      "psu_min": 400,
+      "mining_risk": false,
+      "price_new": 17999,
+      "price_used": 9000,
+      "estimate": true
+    },
+    {
+      "id": "rx5500xt",
+      "name": "AMD Radeon RX 5500 XT",
+      "aliases": [
+        "rx 5500 xt",
+        "5500 xt",
+        "5500xt"
+      ],
+      "score": 14,
+      "psu_min": 400,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 7500,
+      "estimate": true
+    },
+    {
+      "id": "gtx1070",
+      "name": "NVIDIA GTX 1070",
+      "aliases": [
+        "gtx 1070",
+        "gtx1070",
+        "1070"
+      ],
+      "score": 15,
+      "psu_min": 400,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 9000,
+      "estimate": true
+    },
+    {
+      "id": "gtx1660",
+      "name": "NVIDIA GTX 1660",
+      "aliases": [
+        "gtx 1660",
+        "gtx1660"
+      ],
+      "score": 16,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 10000,
+      "estimate": true
+    },
+    {
+      "id": "rtx3050",
+      "name": "NVIDIA RTX 3050",
+      "aliases": [
+        "rtx 3050",
+        "rtx3050",
+        "3050"
+      ],
+      "score": 17,
+      "psu_min": 500,
+      "mining_risk": false,
+      "price_new": 23999,
+      "price_used": 13000,
+      "estimate": true
     },
     {
       "id": "gtx1660s",
@@ -294,6 +903,51 @@
       "price_used": 11000
     },
     {
+      "id": "gtx1080",
+      "name": "NVIDIA GTX 1080",
+      "aliases": [
+        "gtx 1080",
+        "gtx1080",
+        "1080"
+      ],
+      "score": 18,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 11000,
+      "estimate": true
+    },
+    {
+      "id": "gtx1660ti",
+      "name": "NVIDIA GTX 1660 Ti",
+      "aliases": [
+        "gtx 1660 ti",
+        "1660 ti",
+        "1660ti"
+      ],
+      "score": 18,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 11500,
+      "estimate": true
+    },
+    {
+      "id": "rx5600xt",
+      "name": "AMD Radeon RX 5600 XT",
+      "aliases": [
+        "rx 5600 xt",
+        "5600 xt",
+        "5600xt"
+      ],
+      "score": 20,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 10500,
+      "estimate": true
+    },
+    {
       "id": "rtx2060",
       "name": "NVIDIA RTX 2060",
       "aliases": [
@@ -306,6 +960,51 @@
       "mining_risk": true,
       "price_new": null,
       "price_used": 13000
+    },
+    {
+      "id": "gtx1080ti",
+      "name": "NVIDIA GTX 1080 Ti",
+      "aliases": [
+        "gtx 1080 ti",
+        "1080 ti",
+        "1080ti"
+      ],
+      "score": 22,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 14000,
+      "estimate": true
+    },
+    {
+      "id": "rtx2060s",
+      "name": "NVIDIA RTX 2060 Super",
+      "aliases": [
+        "rtx 2060 super",
+        "2060 super",
+        "2060s"
+      ],
+      "score": 25,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 15000,
+      "estimate": true
+    },
+    {
+      "id": "rx5700xt",
+      "name": "AMD Radeon RX 5700 XT",
+      "aliases": [
+        "rx 5700 xt",
+        "5700 xt",
+        "5700xt"
+      ],
+      "score": 25,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 13500,
+      "estimate": true
     },
     {
       "id": "rx6600",
@@ -322,6 +1021,21 @@
       "price_used": 29200
     },
     {
+      "id": "rtx2070",
+      "name": "NVIDIA RTX 2070",
+      "aliases": [
+        "rtx 2070",
+        "rtx2070",
+        "2070"
+      ],
+      "score": 26,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 16000,
+      "estimate": true
+    },
+    {
       "id": "rtx3060",
       "name": "NVIDIA RTX 3060 12GB",
       "aliases": [
@@ -334,6 +1048,21 @@
       "mining_risk": true,
       "price_new": 44799,
       "price_used": 33600
+    },
+    {
+      "id": "rtx5050",
+      "name": "NVIDIA RTX 5050",
+      "aliases": [
+        "rtx 5050",
+        "rtx5050",
+        "5050"
+      ],
+      "score": 28,
+      "psu_min": 500,
+      "mining_risk": false,
+      "price_new": 31999,
+      "price_used": 24000,
+      "estimate": true
     },
     {
       "id": "rx7600",
@@ -349,6 +1078,36 @@
       "price_used": 30000
     },
     {
+      "id": "rtx2070s",
+      "name": "NVIDIA RTX 2070 Super",
+      "aliases": [
+        "rtx 2070 super",
+        "2070 super",
+        "2070s"
+      ],
+      "score": 29,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 18000,
+      "estimate": true
+    },
+    {
+      "id": "rx6600xt",
+      "name": "AMD Radeon RX 6600 XT",
+      "aliases": [
+        "rx 6600 xt",
+        "6600 xt",
+        "6600xt"
+      ],
+      "score": 30,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 22000,
+      "estimate": true
+    },
+    {
       "id": "rtx4060",
       "name": "NVIDIA RTX 4060",
       "aliases": [
@@ -361,6 +1120,81 @@
       "mining_risk": false,
       "price_new": 27999,
       "price_used": 25000
+    },
+    {
+      "id": "rtx2080",
+      "name": "NVIDIA RTX 2080",
+      "aliases": [
+        "rtx 2080",
+        "rtx2080",
+        "2080"
+      ],
+      "score": 31,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 20000,
+      "estimate": true
+    },
+    {
+      "id": "rx7600xt",
+      "name": "AMD Radeon RX 7600 XT",
+      "aliases": [
+        "rx 7600 xt",
+        "7600 xt",
+        "7600xt"
+      ],
+      "score": 31,
+      "psu_min": 500,
+      "mining_risk": false,
+      "price_new": 41999,
+      "price_used": 30000,
+      "estimate": true
+    },
+    {
+      "id": "rx6650xt",
+      "name": "AMD Radeon RX 6650 XT",
+      "aliases": [
+        "rx 6650 xt",
+        "6650 xt",
+        "6650xt"
+      ],
+      "score": 32,
+      "psu_min": 500,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 24000,
+      "estimate": true
+    },
+    {
+      "id": "rtx2080s",
+      "name": "NVIDIA RTX 2080 Super",
+      "aliases": [
+        "rtx 2080 super",
+        "2080 super",
+        "2080s"
+      ],
+      "score": 33,
+      "psu_min": 500,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 21500,
+      "estimate": true
+    },
+    {
+      "id": "arcb580",
+      "name": "Intel Arc B580",
+      "aliases": [
+        "arc b580",
+        "b580",
+        "intel arc"
+      ],
+      "score": 34,
+      "psu_min": 500,
+      "mining_risk": false,
+      "price_new": 34999,
+      "price_used": 26000,
+      "estimate": true
     },
     {
       "id": "rtx3060ti",
@@ -407,6 +1241,23 @@
       "price_used": 39700
     },
     {
+      "id": "rtx4060ti16",
+      "name": "NVIDIA RTX 4060 Ti 16GB",
+      "aliases": [
+        "rtx 4060 ti 16",
+        "4060 ti 16",
+        "4060ti 16",
+        "4060 ti 16gb",
+        "4060ti 16gb"
+      ],
+      "score": 37,
+      "psu_min": 650,
+      "mining_risk": false,
+      "price_new": 46999,
+      "price_used": 36000,
+      "estimate": true
+    },
+    {
       "id": "rx6700xt",
       "name": "AMD Radeon RX 6700 XT",
       "aliases": [
@@ -420,6 +1271,21 @@
       "mining_risk": true,
       "price_new": null,
       "price_used": 24000
+    },
+    {
+      "id": "rtx2080ti",
+      "name": "NVIDIA RTX 2080 Ti",
+      "aliases": [
+        "rtx 2080 ti",
+        "2080 ti",
+        "2080ti"
+      ],
+      "score": 39,
+      "psu_min": 650,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 27000,
+      "estimate": true
     },
     {
       "id": "rtx3070",
@@ -436,6 +1302,86 @@
       "price_used": 26000
     },
     {
+      "id": "rx6750xt",
+      "name": "AMD Radeon RX 6750 XT",
+      "aliases": [
+        "rx 6750 xt",
+        "6750 xt",
+        "6750xt"
+      ],
+      "score": 41,
+      "psu_min": 650,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 27000,
+      "estimate": true
+    },
+    {
+      "id": "rx9060xt8",
+      "name": "AMD Radeon RX 9060 XT 8GB",
+      "aliases": [
+        "rx 9060 xt 8",
+        "9060 xt 8",
+        "9060xt 8gb",
+        "9060 xt 8gb"
+      ],
+      "score": 41,
+      "psu_min": 650,
+      "mining_risk": false,
+      "price_new": 49999,
+      "price_used": 40000,
+      "estimate": true
+    },
+    {
+      "id": "rtx5060ti8",
+      "name": "NVIDIA RTX 5060 Ti 8GB",
+      "aliases": [
+        "rtx 5060 ti",
+        "5060 ti",
+        "5060ti",
+        "5060 ti 8",
+        "5060 ti 8gb"
+      ],
+      "score": 42,
+      "psu_min": 650,
+      "mining_risk": false,
+      "price_new": 59999,
+      "price_used": 45000,
+      "estimate": true
+    },
+    {
+      "id": "rtx3070ti",
+      "name": "NVIDIA RTX 3070 Ti",
+      "aliases": [
+        "rtx 3070 ti",
+        "3070 ti",
+        "3070ti"
+      ],
+      "score": 43,
+      "psu_min": 650,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 29000,
+      "estimate": true
+    },
+    {
+      "id": "rtx5060ti16",
+      "name": "NVIDIA RTX 5060 Ti 16GB",
+      "aliases": [
+        "rtx 5060 ti 16",
+        "5060 ti 16",
+        "5060ti 16",
+        "5060 ti 16gb",
+        "5060ti 16gb"
+      ],
+      "score": 44,
+      "psu_min": 650,
+      "mining_risk": false,
+      "price_new": 69999,
+      "price_used": 52000,
+      "estimate": true
+    },
+    {
       "id": "rx9060xt",
       "name": "AMD Radeon RX 9060 XT 16GB",
       "aliases": [
@@ -449,6 +1395,35 @@
       "mining_risk": false,
       "price_new": 69999,
       "price_used": 52500
+    },
+    {
+      "id": "rx7700xt",
+      "name": "AMD Radeon RX 7700 XT",
+      "aliases": [
+        "rx 7700 xt",
+        "7700 xt",
+        "7700xt"
+      ],
+      "score": 45,
+      "psu_min": 650,
+      "mining_risk": false,
+      "price_new": 52999,
+      "price_used": 38000,
+      "estimate": true
+    },
+    {
+      "id": "rx6800",
+      "name": "AMD Radeon RX 6800",
+      "aliases": [
+        "rx 6800",
+        "rx6800"
+      ],
+      "score": 50,
+      "psu_min": 650,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 33000,
+      "estimate": true
     },
     {
       "id": "rtx3080",
@@ -494,6 +1469,81 @@
       "price_used": 46500
     },
     {
+      "id": "rx6800xt",
+      "name": "AMD Radeon RX 6800 XT",
+      "aliases": [
+        "rx 6800 xt",
+        "6800 xt",
+        "6800xt"
+      ],
+      "score": 56,
+      "psu_min": 750,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 40000,
+      "estimate": true
+    },
+    {
+      "id": "rtx3080ti",
+      "name": "NVIDIA RTX 3080 Ti",
+      "aliases": [
+        "rtx 3080 ti",
+        "3080 ti",
+        "3080ti"
+      ],
+      "score": 58,
+      "psu_min": 750,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 45000,
+      "estimate": true
+    },
+    {
+      "id": "rtx3090",
+      "name": "NVIDIA RTX 3090",
+      "aliases": [
+        "rtx 3090",
+        "rtx3090",
+        "3090"
+      ],
+      "score": 60,
+      "psu_min": 750,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 55000,
+      "estimate": true
+    },
+    {
+      "id": "rtx4070ti",
+      "name": "NVIDIA RTX 4070 Ti",
+      "aliases": [
+        "rtx 4070 ti",
+        "4070 ti",
+        "4070ti"
+      ],
+      "score": 60,
+      "psu_min": 750,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 62000,
+      "estimate": true
+    },
+    {
+      "id": "rx6900xt",
+      "name": "AMD Radeon RX 6900 XT",
+      "aliases": [
+        "rx 6900 xt",
+        "6900 xt",
+        "6900xt"
+      ],
+      "score": 60,
+      "psu_min": 750,
+      "mining_risk": true,
+      "price_new": null,
+      "price_used": 45000,
+      "estimate": true
+    },
+    {
       "id": "rtx4070s",
       "name": "NVIDIA RTX 4070 Super",
       "aliases": [
@@ -507,6 +1557,21 @@
       "mining_risk": false,
       "price_new": 59999,
       "price_used": 55000
+    },
+    {
+      "id": "rx7900gre",
+      "name": "AMD Radeon RX 7900 GRE",
+      "aliases": [
+        "rx 7900 gre",
+        "7900 gre",
+        "7900gre"
+      ],
+      "score": 62,
+      "psu_min": 750,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 52000,
+      "estimate": true
     },
     {
       "id": "rtx5070",
@@ -523,6 +1588,36 @@
       "price_used": 74200
     },
     {
+      "id": "rtx4070tis",
+      "name": "NVIDIA RTX 4070 Ti Super",
+      "aliases": [
+        "rtx 4070 ti super",
+        "4070 ti super",
+        "4070tis"
+      ],
+      "score": 67,
+      "psu_min": 750,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 72000,
+      "estimate": true
+    },
+    {
+      "id": "rx7900xt",
+      "name": "AMD Radeon RX 7900 XT",
+      "aliases": [
+        "rx 7900 xt",
+        "7900 xt",
+        "7900xt"
+      ],
+      "score": 70,
+      "psu_min": 750,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 62000,
+      "estimate": true
+    },
+    {
       "id": "rx9070",
       "name": "AMD Radeon RX 9070",
       "aliases": [
@@ -535,6 +1630,21 @@
       "mining_risk": false,
       "price_new": 74999,
       "price_used": 60000
+    },
+    {
+      "id": "rtx4080",
+      "name": "NVIDIA RTX 4080",
+      "aliases": [
+        "rtx 4080",
+        "rtx4080",
+        "4080"
+      ],
+      "score": 78,
+      "psu_min": 750,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 85000,
+      "estimate": true
     },
     {
       "id": "rx9070xt",
@@ -550,6 +1660,36 @@
       "mining_risk": false,
       "price_new": 99999,
       "price_used": 75000
+    },
+    {
+      "id": "rtx4080s",
+      "name": "NVIDIA RTX 4080 Super",
+      "aliases": [
+        "rtx 4080 super",
+        "4080 super",
+        "4080s"
+      ],
+      "score": 80,
+      "psu_min": 750,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 90000,
+      "estimate": true
+    },
+    {
+      "id": "rx7900xtx",
+      "name": "AMD Radeon RX 7900 XTX",
+      "aliases": [
+        "rx 7900 xtx",
+        "7900 xtx",
+        "7900xtx"
+      ],
+      "score": 82,
+      "psu_min": 850,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 78000,
+      "estimate": true
     },
     {
       "id": "rtx5070ti",
@@ -579,6 +1719,36 @@
       "mining_risk": false,
       "price_new": 203999,
       "price_used": 153000
+    },
+    {
+      "id": "rtx4090",
+      "name": "NVIDIA RTX 4090",
+      "aliases": [
+        "rtx 4090",
+        "rtx4090",
+        "4090"
+      ],
+      "score": 105,
+      "psu_min": 850,
+      "mining_risk": false,
+      "price_new": null,
+      "price_used": 160000,
+      "estimate": true
+    },
+    {
+      "id": "rtx5090",
+      "name": "NVIDIA RTX 5090",
+      "aliases": [
+        "rtx 5090",
+        "rtx5090",
+        "5090"
+      ],
+      "score": 150,
+      "psu_min": 1000,
+      "mining_risk": false,
+      "price_new": 399999,
+      "price_used": 300000,
+      "estimate": true
     }
   ],
   "mobo": [
