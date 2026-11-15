@@ -58,18 +58,35 @@ function allPriceParts() {
 }
 const norm = s => " " + s.toLowerCase().replace(/ё/g, "е").replace(/[^a-z0-9а-я]+/g, " ").trim() + " ";
 
+// Слова запроса идут подряд, последнее — начало слова: «ryzen 7» → Ryzen 7 5700X, но не Ryzen 5 7600
+function phraseHit(words, text) {
+  const t = norm(text).trim().split(" "), n = words.length;
+  for (let i = 0; i + n <= t.length; i++) {
+    let ok = true;
+    for (let k = 0; k < n - 1 && ok; k++) ok = t[i + k] === words[k];
+    if (ok && t[i + n - 1].startsWith(words[n - 1])) return true;
+  }
+  return false;
+}
+
 function searchParts(q) {
   const nq = norm(q).trim();
   if (!nq) return [];
   const words = nq.split(" ");
-  return allPriceParts()
-    .map(p => {
-      const hay = norm(p.name + " " + p.aliases.join(" "));
-      const hit = words.every(w => hay.includes(w));
-      const exact = p.aliases.some(a => norm(a).trim() === nq);
-      return hit ? { p, s: (exact ? 10 : 0) - p.name.length / 100 } : null;
-    })
-    .filter(Boolean).sort((a, b) => b.s - a.s).slice(0, 6).map(x => x.p);
+  const phrase = [], loose = [];
+  allPriceParts().forEach(p => {
+    const texts = [p.name, ...p.aliases];
+    const item = { p, exact: p.aliases.some(a => norm(a).trim() === nq) };
+    if (texts.some(t => phraseHit(words, t))) phrase.push(item);
+    else {
+      // «intel i5»: слова не подряд, но каждое — начало какого-то слова
+      const hay = norm(texts.join(" ")).trim().split(" ");
+      if (words.every(w => hay.some(h => h.startsWith(w)))) loose.push(item);
+    }
+  });
+  return (phrase.length ? phrase : loose)
+    .sort((a, b) => (b.exact - a.exact) || a.p.name.localeCompare(b.p.name, "en", { numeric: true }))
+    .slice(0, 8).map(x => x.p);
 }
 
 function renderSuggest(list) {

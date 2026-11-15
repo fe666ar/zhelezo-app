@@ -87,6 +87,7 @@ h1 { font-weight: 700; font-size: 26px; line-height: 1.15; margin: 4px 0 8px; le
 
 /* ---------- поля ---------- */
 .field { margin-bottom: 14px; position: relative; }
+.field:focus-within, .field:has(.suggest.open) { z-index: 30; }
 .field label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 6px 2px; font-weight: 600; }
 .field input, .field textarea {
   width: 100%; background: var(--glass); border: 1px solid var(--line); border-radius: var(--r-in);
@@ -107,7 +108,7 @@ h1 { font-weight: 700; font-size: 26px; line-height: 1.15; margin: 4px 0 8px; le
 .money span { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 20px; }
 
 .suggest {
-  position: absolute; z-index: 10; left: 0; right: 0; top: calc(100% + 6px); background: rgba(24, 22, 40, .92);
+  position: absolute; z-index: 10; left: 0; right: 0; top: calc(100% + 6px); background: rgba(20, 19, 34, .98);
   border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
   opacity: 0; transform: translateY(-6px) scale(.98); transform-origin: top; pointer-events: none;
   transition: opacity 200ms var(--ease), transform 260ms var(--ease);
