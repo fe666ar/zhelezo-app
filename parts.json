@@ -1814,6 +1814,36 @@
       "tier": 2,
       "price_new": 12199,
       "price_used": 10000
+    },
+    {
+      "id": "h510m",
+      "name": "Плата H510M (LGA1200)",
+      "socket": "LGA1200",
+      "ram": "DDR4",
+      "tier": 1,
+      "price_new": 6499,
+      "price_used": 3800,
+      "estimate": true
+    },
+    {
+      "id": "b560m",
+      "name": "Плата B560M (LGA1200)",
+      "socket": "LGA1200",
+      "ram": "DDR4",
+      "tier": 2,
+      "price_new": null,
+      "price_used": 5500,
+      "estimate": true
+    },
+    {
+      "id": "b860m",
+      "name": "Плата B860M (LGA1851)",
+      "socket": "LGA1851",
+      "ram": "DDR5",
+      "tier": 2,
+      "price_new": 14999,
+      "price_used": 11500,
+      "estimate": true
     }
   ],
   "ram": [

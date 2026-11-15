@@ -19,7 +19,7 @@ function paint(out, html, key) {
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 let DB = null;
-const state = { part: null, build: null, purpose: "games", mode: "new" };
+const state = { part: null, build: null, purpose: "games", mode: "new", lock: {}, mine: [] };
 
 /* ---------- Оценка цены ---------- */
 const TIPS = {
@@ -183,13 +183,18 @@ function cheapest(items, used = false) {
   for (const i of items) { const p = priceOf(i, used); if (p && (!best || p < best[1])) best = [i, p]; }
   return best || [null, null];
 }
-function build(budget, purpose, used) {
-  let best = null;
+// lock = { cpu, gpu, ram, ssd } — детали, которые человек выбрал сам; с заменами бюджет мягкий
+function build(budget, purpose, used, lock = {}) {
+  let best = null, over = null;
+  const locked = Object.keys(lock).length > 0;
+  const u = x => used && !!x.price_used;
   for (const cpu of DB.cpu) {
+    if (lock.cpu && cpu.id !== lock.cpu) continue;
     const cp = priceOf(cpu, used); if (!cp) continue;
     for (const gpu of DB.gpu) {
+      if (lock.gpu && gpu.id !== lock.gpu) continue;
       const gp = priceOf(gpu, used); if (!gp) continue;
-      if (purpose === "games" && cpu.score < gpu.score * 0.8) continue;
+      if (purpose === "games" && !(lock.cpu && lock.gpu) && cpu.score < gpu.score * 0.8) continue;
       for (const ramType of cpu.ram) {
         const minTier = cpu.score >= 70 || cpu.tdp >= 120 ? 2 : 1;
         const [mobo, mp] = cheapest(DB.mobo.filter(m => m.socket === cpu.socket && m.ram === ramType && m.tier >= minTier), used);
@@ -202,36 +207,59 @@ function build(budget, purpose, used) {
         const cooler = cpu.box_cooler ? null : DB.cooler[0];
         const clp = cooler ? cooler.price_new : 0;
         for (const ram of DB.ram.filter(r => r.type === ramType)) {
+          if (lock.ram && ram.id !== lock.ram) continue;
           const rp = priceOf(ram, used);
           for (const ssd of DB.ssd) {
+            if (lock.ssd && ssd.id !== lock.ssd) continue;
             const total = cp + gp + mp + rp + pp + ssd.price_new + csp + clp;
-            if (total > budget) continue;
             let score = purpose === "games"
               ? gpu.score * 0.75 + cpu.score * 0.25 + (ram.size >= 32 ? 3 : 0)
               : cpu.mt * 0.6 + gpu.score * 0.25 + (ram.size >= 32 ? 12 : 0);
             score += ssd.size >= 1000 ? 2 : 0;
-            if (!best || score > best.score || (score === best.score && total < best.total)) {
-              const u = x => used && !!x.price_used;
-              best = {
-                score, total, budget, purpose, used, gpu, cpu,
-                items: [
-                  ["cpu", "Процессор", cpu.name, cp, u(cpu)],
-                  ["gpu", "Видеокарта", gpu.name, gp, u(gpu)],
-                  ["mobo", "Материнская плата", mobo.name, mp, u(mobo)],
-                  ["ram", "Память", ram.name, rp, u(ram)],
-                  ["ssd", "Накопитель", ssd.name, ssd.price_new, false],
-                  ["psu", "Блок питания", psu.name, pp, false],
-                  ["case", "Корпус", cs.name, csp, false],
-                  ...(cooler ? [["cooler", "Кулер", cooler.name, clp, false]] : []),
-                ],
-              };
+            const make = () => ({
+              score, total, budget, purpose, used, gpu, cpu, lock: { ...lock },
+              ids: { cpu: cpu.id, gpu: gpu.id, ram: ram.id, ssd: ssd.id },
+              items: [
+                ["cpu", "Процессор", cpu.name, cp, u(cpu)],
+                ["gpu", "Видеокарта", gpu.name, gp, u(gpu)],
+                ["mobo", "Материнская плата", mobo.name, mp, u(mobo)],
+                ["ram", "Память", ram.name, rp, u(ram)],
+                ["ssd", "Накопитель", ssd.name, ssd.price_new, false],
+                ["psu", "Блок питания", psu.name, pp, false],
+                ["case", "Корпус", cs.name, csp, false],
+                ...(cooler ? [["cooler", "Кулер", cooler.name, clp, false]] : []),
+              ],
+            });
+            if (total > budget) {
+              if (locked && (!over || total < over.total)) over = make();
+              continue;
             }
+            if (!best || score > best.score || (score === best.score && total < best.total)) best = make();
           }
         }
       }
     }
   }
-  return best;
+  return best || over;
+}
+
+// Варианты замены: [деталь, разница в цене], ближайшие по мощности (слабее — только если дешевле)
+function alternatives(b, kind, n = 10) {
+  const list = DB[kind], cur = list.find(p => p.id === b.ids[kind]);
+  const pr = p => kind === "ssd" ? p.price_new : priceOf(p, b.used);
+  const curP = pr(cur);
+  let items = list.filter(p => p.id !== cur.id && pr(p))
+    .filter(p => kind !== "ram" || b.cpu.ram.includes(p.type))
+    .filter(p => kind !== "cpu" || DB.mobo.some(m => m.socket === p.socket))
+    .map(p => [p, pr(p) - curP]);
+  if (kind === "cpu" || kind === "gpu") {
+    const key = kind === "gpu" || b.purpose === "games" ? "score" : "mt";
+    items.sort((a, c) => (a[0][key] || 0) - (c[0][key] || 0));
+    const below = items.filter(x => (x[0][key] || 0) <= (cur[key] || 0) && x[1] < 0).slice(-Math.floor(n / 2));
+    const above = items.filter(x => (x[0][key] || 0) > (cur[key] || 0)).slice(0, n - below.length);
+    items = [...below, ...above];
+  } else items.sort((a, c) => a[1] - c[1]);
+  return items;
 }
 const ICONS = { cpu: "🧠", gpu: "🎮", mobo: "🔌", ram: "📏", ssd: "💾", psu: "⚡", case: "🗄", cooler: "🌀" };
 function perfLabel(b) {
@@ -254,7 +282,7 @@ function renderBuild() {
   range.style.setProperty("--fill", ((budget - range.min) / (range.max - range.min) * 100) + "%");
   $("#budget-num").textContent = budget.toLocaleString("ru-RU").replace(/,/g, " ");
   $$("#budget-chips button").forEach(b => b.classList.toggle("on", +b.dataset.v === budget));
-  const b = build(budget, state.purpose, state.mode === "used");
+  const b = build(budget, state.purpose, state.mode === "used", state.lock);
   state.build = b;
   const out = $("#build-out");
   if (!b) {
@@ -268,17 +296,53 @@ function renderBuild() {
       <div class="perf"><div><div class="perf-label">Потянет</div><div class="perf-val">${perfLabel(b)}</div></div>${meter(pct)}</div>
       <div class="parts">
         ${b.items.map(([k, role, name, price, u]) => `
-          <div class="part"><div class="ic">${ICONS[k]}</div>
-            <div class="nm"><small>${role}${u ? '<span class="tag">Б/У</span>' : ""}</small><div>${esc(name)}</div></div>
-            <div class="pr">${rub(price)}</div></div>`).join("")}
+          <div class="part${SWAP[k] ? " swap" : ""}${state.mine.includes(k) ? " mine" : ""}" ${SWAP[k] ? `data-k="${k}"` : ""}><div class="ic">${ICONS[k]}</div>
+            <div class="nm"><small>${role}${u ? '<span class="tag">Б/У</span>' : ""}${state.mine.includes(k) ? '<span class="tag mine">твой выбор</span>' : ""}</small><div>${esc(name)}</div></div>
+            <div class="pr">${rub(price)}${SWAP[k] ? '<i class="sw">⇄</i>' : ""}</div></div>`).join("")}
       </div>
       <div class="total"><span>Итого</span><b>${rub(b.total)}</b></div>
+      ${left < 0 ? `<p class="note warn">⚠️ Сверх бюджета на ${rub(-left)} — из-за замен.</p>` : ""}
+      ${state.mine.length ? `<button class="btn" style="margin-top:12px" id="b-reset">↩️ Вернуть оптимальную</button>` : `<p class="note">Нажми на процессор, видеокарту, память или SSD, чтобы заменить.</p>`}
       ${left >= 3000 ? `<p class="note">Остаётся ${rub(left)} — ${left >= 25000 ? "это потолок по мощности, остаток лучше пустить на монитор или SSD на 2 ТБ" : "можно взять SSD побольше или кулер потише"}.</p>` : ""}
       ${b.used ? `<p class="note">⚠️ Б/у детали проверяй перед покупкой — оценивай объявления во вкладке «Оценка».</p>` : ""}
       <button class="btn primary" style="margin-top:14px" id="b-order">🔧 Собрать мне это под ключ</button>
     </div>
     <p class="hint">Цены ориентировочные: новое — ${esc(DB.sources?.new || "DNS")}, б/у — ${esc(DB.sources?.used || "Авито")}</p>`, "b:" + state.purpose + state.mode);
+  $$(".part.swap", out).forEach(el => el.onclick = () => openSwap(el.dataset.k));
+  const rs = $("#b-reset"); if (rs) rs.onclick = () => { state.lock = {}; state.mine = []; haptic(); renderBuild(); };
   $("#b-order").onclick = () => { haptic("medium"); showScreen("s-order"); };
+}
+
+
+const SWAP = { cpu: "Процессор", gpu: "Видеокарта", ram: "Память", ssd: "Накопитель" };
+function openSwap(kind) {
+  const b = state.build; if (!b) return;
+  haptic();
+  const alts = alternatives(b, kind);
+  const cur = b.items.find(i => i[0] === kind);
+  const sheet = document.createElement("div");
+  sheet.className = "sheet";
+  sheet.innerHTML = `<div class="sheet-bg"></div><div class="sheet-box">
+    <div class="sheet-grip"></div>
+    <div class="sheet-h">${SWAP[kind]}</div>
+    <div class="sheet-cur">Сейчас: ${esc(cur[2])} — ${rub(cur[3])}</div>
+    <div class="sheet-list">${alts.length ? alts.map(([p, d], i) => `<button data-i="${i}"><span>${esc(p.name)}</span>
+      <b class="${d > 0 ? "up" : "down"}">${d > 0 ? "+" : d < 0 ? "−" : "±"}${rub(Math.abs(d))}</b></button>`).join("")
+      : `<div class="empty">Других вариантов под эту сборку нет</div>`}</div>
+    <p class="hint">Плату, блок питания и память подберу под замену автоматически.</p></div>`;
+  document.body.appendChild(sheet);
+  requestAnimationFrame(() => sheet.classList.add("open"));
+  const close = () => { sheet.classList.remove("open"); setTimeout(() => sheet.remove(), 300); };
+  $(".sheet-bg", sheet).onclick = close;
+  $$(".sheet-list button", sheet).forEach(btn => btn.onclick = () => {
+    const p = alts[+btn.dataset.i][0];
+    // остальное оставляем как было, подстраиваются только плата, БП и корпус
+    state.lock = { cpu: b.ids.cpu, gpu: b.ids.gpu, ram: b.ids.ram, ssd: b.ids.ssd, [kind]: p.id };
+    const ramNow = DB.ram.find(r => r.id === b.ids.ram);
+    if (kind === "cpu" && !p.ram.includes(ramNow.type)) delete state.lock.ram; // другой тип памяти — подберём
+    if (!state.mine.includes(kind)) state.mine.push(kind);
+    haptic("medium"); close(); renderBuild();
+  });
 }
 
 function buildSummary(b) {
