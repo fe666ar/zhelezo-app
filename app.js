@@ -2,12 +2,20 @@
 const tg = window.Telegram?.WebApp;
 if (tg) {
   tg.ready(); tg.expand();
-  try { tg.setHeaderColor("#0a0c0f"); tg.setBackgroundColor("#0a0c0f"); } catch (e) {}
+  try { tg.setHeaderColor("#0B0D18"); tg.setBackgroundColor("#0B0D18"); tg.setBottomBarColor?.("#0B0D18"); } catch (e) {}
 }
 const haptic = (t = "light") => { try { tg?.HapticFeedback?.impactOccurred(t); } catch (e) {} };
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const rub = n => Math.round(n).toLocaleString("ru-RU").replace(/,/g, " ") + " ₽";
+// Перерисовка блока: анимируем появление только когда меняется «что показываем», а не каждое число
+function paint(out, html, key) {
+  out.innerHTML = html;
+  if (out.dataset.k !== key) {
+    out.dataset.k = key;
+    out.classList.toggle("enter", false); void out.offsetWidth; out.classList.toggle("enter", true);
+  }
+}
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 let DB = null;
@@ -26,11 +34,11 @@ const TIPS = {
   ],
 };
 const ZONES = [ // доля от рыночной цены б/у
-  { to: 0.6, color: "#ff4d5e", key: "sus" },
-  { to: 0.85, color: "#3ddc84", key: "great" },
-  { to: 1.1, color: "#c6ff3d", key: "ok" },
-  { to: 1.3, color: "#ffb020", key: "pricey" },
-  { to: 1.6, color: "#ff4d5e", key: "over" },
+  { to: 0.6, color: "#F08091", key: "sus" },
+  { to: 0.85, color: "#69D5AD", key: "great" },
+  { to: 1.1, color: "#91A8F2", key: "ok" },
+  { to: 1.3, color: "#F1BB78", key: "pricey" },
+  { to: 1.6, color: "#F08091", key: "over" },
 ];
 
 function verdict(price, used, nw) {
@@ -43,7 +51,7 @@ function verdict(price, used, nw) {
   if (r <= 1.3) return { key: "pricey", emoji: "⚠️", title: "Дороговато", note: `Предложи около ${rub(used)} — это рынок.` };
   return { key: "over", emoji: "❌", title: "Переплата", note: `Рынок около ${rub(used)}. Ищи другие объявления.` };
 }
-const zoneColor = k => ({ sus: "#ff4d5e", great: "#3ddc84", ok: "#c6ff3d", pricey: "#ffb020", over: "#ff4d5e" }[k]);
+const zoneColor = k => ({ sus: "#F08091", great: "#69D5AD", ok: "#91A8F2", pricey: "#F1BB78", over: "#F08091" }[k]);
 
 function allPriceParts() {
   return [...DB.gpu.map(p => ({ ...p, cat: "gpu" })), ...DB.cpu.map(p => ({ ...p, cat: "cpu" }))];
@@ -91,7 +99,7 @@ function parsePrice(s) {
 
 function renderVerdict() {
   const out = $("#verdict"), p = state.part;
-  if (!p) { out.innerHTML = `<div class="empty">Начни вводить модель — например <b>3070</b> или <b>5600</b></div>`; return; }
+  if (!p) { paint(out, `<div class="empty">Начни вводить модель — например <b>3070</b> или <b>5600</b></div>`, "empty"); return; }
   const price = parsePrice($("#price").value);
   const used = p.price_used, nw = p.price_new;
   const src = DB.sources || {};
@@ -106,9 +114,9 @@ function renderVerdict() {
       <a class="btn" href="${esc(shopLink(p))}" target="_blank">Новая в DNS</a>
     </div>`;
   if (!price) {
-    out.innerHTML = `<div class="card"><div class="v-name">${esc(p.name)}</div>
+    paint(out, `<div class="card"><div class="v-name">${esc(p.name)}</div>
       <div class="v-title">Вбей цену из объявления</div>
-      <p class="v-note">Сравню с рынком и скажу, стоит ли брать.</p>${rows}${links}</div>`;
+      <p class="v-note">Сравню с рынком и скажу, стоит ли брать.</p>${rows}${links}</div>`, p.id + ":wait");
     return;
   }
   const v = verdict(price, used, nw);
@@ -119,7 +127,7 @@ function renderVerdict() {
   const tips = [...TIPS[p.cat]];
   if (p.mining_risk) tips.unshift("Спросить про майнинг и проверить температуру памяти (Memory Junction)");
   const c = zoneColor(v.key);
-  out.innerHTML = `
+  paint(out, `
     <div class="card">
       <div class="verdict-top">
         <div class="v-name">${esc(p.name)}</div>
@@ -135,7 +143,7 @@ function renderVerdict() {
       </div>
       ${links}
       <button class="btn primary" style="margin-top:8px" id="v-pro">⭐ Проверить объявление с мастером</button>
-    </div>`;
+    </div>`, p.id + ":v");
   $$(".check", out).forEach(el => el.onclick = () => { el.classList.toggle("done"); haptic("soft"); });
   $("#v-pro").onclick = () => sendToBot({ type: "pro_check", part: p.name, price });
   haptic(v.key === "sus" || v.key === "over" ? "heavy" : "medium");
@@ -219,25 +227,26 @@ function perfLabel(b) {
 }
 function meter(pct) {
   const r = 26, c = 2 * Math.PI * r, off = c * (1 - pct);
-  return `<svg class="meter" viewBox="0 0 64 64"><circle cx="32" cy="32" r="${r}" fill="none" stroke="#262b34" stroke-width="7"/>
-    <circle cx="32" cy="32" r="${r}" fill="none" stroke="#c6ff3d" stroke-width="7" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 32 32)"/>
-    <text x="32" y="37" text-anchor="middle" fill="#eef1f5" font-family="JetBrains Mono" font-weight="700" font-size="15">${Math.round(pct * 100)}</text></svg>`;
+  return `<svg class="meter" viewBox="0 0 64 64"><circle cx="32" cy="32" r="${r}" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="7"/>
+    <circle class="arc" cx="32" cy="32" r="${r}" fill="none" stroke="#B8A6F5" stroke-width="7" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 32 32)"/>
+    <text x="32" y="37" text-anchor="middle" fill="#F3F1FA" font-family="Manrope" font-weight="700" font-size="16">${Math.round(pct * 100)}</text></svg>`;
 }
 
 function renderBuild() {
-  const budget = +$("#budget").value;
+  const range = $("#budget"), budget = +range.value;
+  range.style.setProperty("--fill", ((budget - range.min) / (range.max - range.min) * 100) + "%");
   $("#budget-num").textContent = budget.toLocaleString("ru-RU").replace(/,/g, " ");
   $$("#budget-chips button").forEach(b => b.classList.toggle("on", +b.dataset.v === budget));
   const b = build(budget, state.purpose, state.mode === "used");
   state.build = b;
   const out = $("#build-out");
   if (!b) {
-    out.innerHTML = `<div class="empty">На ${rub(budget)} нормальную сборку не собрать.<br>Подвинь бюджет вправо${state.mode === "new" ? " или включи «С б/у»" : ""}.</div>`;
+    paint(out, `<div class="empty">На ${rub(budget)} нормальную сборку не собрать.<br>Подвинь бюджет вправо${state.mode === "new" ? " или включи «С б/у»" : ""}.</div>`, "empty");
     return;
   }
   const pct = Math.min(1, (state.purpose === "games" ? b.gpu.score : b.cpu.mt) / 100);
   const left = b.budget - b.total;
-  out.innerHTML = `
+  paint(out, `
     <div class="card">
       <div class="perf"><div><div class="perf-label">Потянет</div><div class="perf-val">${perfLabel(b)}</div></div>${meter(pct)}</div>
       <div class="parts">
@@ -251,7 +260,7 @@ function renderBuild() {
       ${b.used ? `<p class="note">⚠️ Б/у детали проверяй перед покупкой — оценивай объявления во вкладке «Оценка».</p>` : ""}
       <button class="btn primary" style="margin-top:14px" id="b-order">🔧 Собрать мне это под ключ</button>
     </div>
-    <p class="hint">Цены ориентировочные: новое — ${esc(DB.sources?.new || "DNS")}, б/у — ${esc(DB.sources?.used || "Авито")}</p>`;
+    <p class="hint">Цены ориентировочные: новое — ${esc(DB.sources?.new || "DNS")}, б/у — ${esc(DB.sources?.used || "Авито")}</p>`, "b:" + state.purpose + state.mode);
   $("#b-order").onclick = () => { haptic("medium"); showScreen("s-order"); };
 }
 
@@ -317,6 +326,7 @@ async function init() {
   $("#budget").addEventListener("change", () => haptic("soft"));
   $$(".seg").forEach(seg => $$("button", seg).forEach(btn => btn.onclick = () => {
     $$("button", seg).forEach(x => x.classList.toggle("on", x === btn));
+    seg.classList.toggle("right", btn === $$("button", seg)[1]);
     state[seg.dataset.name] = btn.dataset.v; haptic(); renderBuild();
   }));
 
